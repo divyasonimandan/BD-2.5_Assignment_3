@@ -214,8 +214,8 @@ let hotels = [
 
 // Endpoint 1: Get the hotels sorted by pricing
 
-app.get('/hotels/sort/pricing/:pricing', (req, res) => {
-  let pricing = req.params.pricing;
+app.get('/hotels/sort/pricing', (req, res) => {
+  let pricing = req.query.pricing;
   let hotelsCopy = hotels.slice();
 
   hotelsCopy.sort(function (hotel1, hotel2) {
@@ -252,8 +252,8 @@ app.get('/hotels/sort/rating', (req, res) => {
 
 // Endpoint 3: Get the Hotels sorted based on their Reviews
 
-app.get('/hotels/sort/reviews/:reviews', (req, res) => {
-  let reviews = req.params.reviews;
+app.get('/hotels/sort/reviews', (req, res) => {
+  let reviews = req.query.reviews;
   let hotelsCopy = hotels.slice();
   
   hotelsCopy.sort(function (hotel1, hotel2) {
@@ -277,8 +277,8 @@ function filterByAmenity(hotel, amenity) {
   return hotel.amenity.toLowerCase() === amenity;
 }
 
-app.get('/hotels/filter/amenity/:amenity', (req, res) => {
-  let amenity = req.params.amenity.toLowerCase();
+app.get('/hotels/filter/amenity', (req, res) => {
+  let amenity = req.query.amenity.toLowerCase();
   
   let result = hotels.filter(hotel => filterByAmenity(hotel, amenity));
   res.json({ hotels: result });
@@ -291,8 +291,8 @@ function filterByCountry(hotel, country) {
   return hotel.country.toLowerCase() === country;
 }
 
-app.get('/hotels/filter/country/:country', (req, res) => {
-  let country = req.params.country.toLowerCase();
+app.get('/hotels/filter/country', (req, res) => {
+  let country = req.query.country.toLowerCase();
   
   let result = hotels.filter(hotel => filterByCountry(hotel, country));
   res.json({ hotels: result });
@@ -305,8 +305,8 @@ function filterByCategory(hotel, category) {
   return hotel.category.toLowerCase() === category;
 }
 
-app.get('/hotels/filter/category/:category', (req, res) => {
-  let category = req.params.category.toLowerCase();
+app.get('/hotels/filter/category', (req, res) => {
+  let category = req.query.category.toLowerCase();
   
   let result = hotels.filter(hotel => filterByCategory(hotel, category));
   res.json({ hotels: result });
