@@ -233,8 +233,8 @@ app.get('/hotels/sort/pricing/:pricing', (req, res) => {
 
 // Endpoint 2: Get the hotels sorted based on their Ratings
 
-app.get('/hotels/sort/rating/:rating', (req, res) => {
-  let rating = req.params.rating;
+app.get('/hotels/sort/rating', (req, res) => {
+  let rating = req.query.rating;
   let hotelsCopy = hotels.slice();
   
   hotelsCopy.sort(function (hotel1, hotel2) {
